@@ -10,8 +10,7 @@ export default function App() {
                         RAG Flow System
                     </h1>
                     <p className="mt-2 text-lg text-slate-600">
-                        Hệ thống nạp tri thức tự động bằng Vector Search & Trả
-                        lời ngữ cảnh chính xác cao
+                        Hệ thống trả lời dựa trên thông tin được cung cấp
                     </p>
                 </header>
 
