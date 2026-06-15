@@ -95,10 +95,7 @@ export default function DocumentUploader({
     try {
       const res = await axios.post(
         "http://localhost:5000/api/documents/upload",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        },
+        formData
       );
 
       setStatus({
