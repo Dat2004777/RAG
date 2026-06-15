@@ -5,7 +5,7 @@ import { Document, DocumentDocument } from './document.schema';
 import { EmbeddingService } from '../embedding/embedding.service';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-import pdfParse = require('pdf-parse');
+import { PDFParse } from 'pdf-parse';
 
 export interface UploadedFile {
   originalname: string;
@@ -33,9 +33,8 @@ export class DocumentService {
         file.mimetype === 'application/pdf' ||
         file.originalname.endsWith('.pdf')
       ) {
-        const pdfData = await (
-          pdfParse as unknown as (buf: Buffer) => Promise<{ text: string }>
-        )(file.buffer);
+        const parser = new PDFParse({ data: file.buffer });
+        const pdfData = await parser.getText();
         extractedText = pdfData.text;
       } else {
         extractedText = file.buffer.toString('utf-8');
